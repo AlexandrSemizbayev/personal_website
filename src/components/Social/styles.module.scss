@@ -1,0 +1,7 @@
+.icon {
+  fill: var(--text_color);
+  transition: fill .4s ease-in-out;
+  &:hover {
+    fill: var(--contrast_color);
+  }
+}

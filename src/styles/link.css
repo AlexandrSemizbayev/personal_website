@@ -1,0 +1,42 @@
+
+.link-element {
+    display: inline-block;
+    position: relative;
+    color: var(--link_color);
+    padding-right: 14px;
+    margin-bottom: 2px;
+}
+
+.link-element:hover::after{
+    width: 100%;
+}
+
+.link-element:hover::before {
+    transform: scale(1.15);
+}
+
+.link-element::before {
+    content: "";
+    position: absolute;
+    right: -10px;
+    top: 5%;
+    background-color: var(--link_color);
+    height: 20px;
+    width: 20px;
+    mask-image: url('/external_link_inactive.svg');
+    mask-size: cover;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.link-element::after {
+    position: absolute;
+    content: "";
+    top: calc(100% + 2px);
+    left: 0;
+    height: 2px;
+    background-color: var(--link_color);
+    width: 0%;
+    transition: width 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}

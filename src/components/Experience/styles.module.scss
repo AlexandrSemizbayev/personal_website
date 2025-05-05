@@ -1,0 +1,24 @@
+.experience {
+  border-radius: 8px;
+  .job-block {
+
+    .title {
+
+    }
+
+    .job-position {
+
+    }
+
+    .job-description {
+
+    }
+
+  }
+
+  &:hover {
+    // backdrop-filter: blur(10px);
+    background: #1e293b80;
+    box-shadow: #8b9bbb87 0px -0.5px 0px 0px;
+  }
+}

@@ -1,0 +1,42 @@
+.card-wrap {
+  border-radius: 8px;
+  display: flex;
+  opacity: 1;
+  transition: opacity .4s ease-in-out;
+
+  .description {
+    white-space: pre-line;
+  }
+
+  .block {
+    flex-grow: 1;
+  }
+
+  .background {
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    background: #1240421c;
+    box-shadow: #8b9bbb87 0px -0.5px 0px 0px;
+    transition: opacity .4s ease-in-out;
+    display: flex;
+  }
+}
+
+  @media (min-width: 1024px) {
+    .card-container {
+      &:has(.card-wrap:hover) .card-wrap:not(:hover) {
+        opacity: .2;
+      }
+    }
+    .card-wrap:hover > .background {
+      opacity: 1;
+    }
+    .background {
+      left: -10%;
+      width: 120%;
+    }
+  }

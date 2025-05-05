@@ -1,0 +1,35 @@
+.horizontal-line {
+  transition: all .4s;
+  margin-right: 1.5em;
+  
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 600;
+  margin: 1em auto;
+  cursor: pointer;
+}
+
+@mixin linkState($color,$width, $max-width, $padding, $bgc) {
+  color: $color;
+  .horizontal-line {
+    width: $width;
+    max-width: $max-width;
+    padding-bottom: $padding;
+    background-color: $bgc;
+  }
+}
+
+.active-link {
+  @include linkState(var(--contrast_color), 80%, 64px, 2px, var(--contrast_color));
+}
+
+.inactive-link {
+  @include linkState(var(--text-color), 40%, 32px, 1px, var(--text_color));
+  &:hover {
+    @include linkState(var(--link_color), 80%, 64px, 2px, var(--contrast_color));
+  }
+}
