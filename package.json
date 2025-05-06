@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
+    "export": "next export",
     "start": "next start",
     "lint": "next lint"
   },
@@ -16,9 +17,14 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@types/jest": "^29.5.14",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@types/uglify-js": "^3.17.5",
+    "@types/webpack": "^5.28.5",
+    "@types/webpack-dev-server": "^4.7.1",
+    "@types/webpack-sources": "^3.2.3",
     "eslint": "^9",
     "eslint-config-next": "15.1.4",
     "postcss": "^8",
