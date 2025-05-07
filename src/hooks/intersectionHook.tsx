@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { createObservableElement } from "@/utils/intersectionObserver";
 import EventBus from "../eventBus";
 import {
@@ -30,7 +30,6 @@ const IntersectionHook = (elementsToObserve: Array<string> = []) => {
         obs.disconnect();
       });
       EventBus.$off(Object.keys(eventsInAir) as string[]);
-      window.removeEventListener("load", loadEvent);
     }
   }, []);
 }
