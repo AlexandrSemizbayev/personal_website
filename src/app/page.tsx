@@ -1,9 +1,6 @@
 import Header from "@/components/Header";
 import About from '@/components/About';
-// import SocialMedia from "@/components/Social";
-// import Experience from "@/components/Experience";
-// import { AboutComponent } from "@/utils/textProcessor";
-import { HomeClientSideComponent } from "@/components/ClientSide";
+import HomeClientSideComponent from "@/components/ClientSide";
 import { GenerateCards } from '@/components/reusable/Card/generator';
 import { data } from "@/data";
 
@@ -11,7 +8,6 @@ import { data } from "@/data";
 
 
 export default function Home() {
-  // console.log('tP', textProcessor)
   const userData = data;
   return (
     <div className="relative">
@@ -24,8 +20,6 @@ export default function Home() {
           <section id="experience" className='relative'>
             <GenerateCards flag='experience' arr={userData.experience}/>
           </section>
-          {/* <AboutComponent/> */}
-          {/* <Experience data={userData.experience}/> */}
         </div>
 
         

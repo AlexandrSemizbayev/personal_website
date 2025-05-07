@@ -8,25 +8,23 @@ import {
   generateChannel,
 } from '@/eventBus/events';
 import styles from './styles.module.scss';
+
+const hash = typeof window !== 'undefined' ? window.location.hash.replace('#', '') || 'about' : 'about';
+function generateRoute(title: string, link?: string, isActive?: boolean) {
+  return {
+    title: title.toUpperCase(),
+    link: link || title,
+    isActive: typeof isActive === 'undefined' ? hash === (link || title) : isActive,
+  }
+}
 const links = [
-  {
-    title: 'ABOUT',
-    link: 'about',
-    isActive: true,
-  },
-  {
-    title: 'EXPERIENCE',
-    link: 'experience',
-    isActive: false,
-  },
-  // {
-  //   title: 'PROJECTS',
-  //   link: 'projects',
-  //   isActive: false,
-  // }
-];
+  'about','experience',
+].map((title) => generateRoute(title));
+
 
 const Navigation = () => {
+
+
   const [reactiveLinks, setLinks] = useState(links);
   function changeActive(idx: number) {
     const updatedLinks = reactiveLinks.map((l) => {
@@ -37,19 +35,24 @@ const Navigation = () => {
     setLinks(() => updatedLinks);
   }
   useEffect(() => {
-    reactiveLinks.forEach(({link}) => {
-      EventBus.$on(generateChannel(channels.intersect, link), () => {
-        const updated = reactiveLinks.map((reactiveLink) => {
-          reactiveLink.isActive = false;
-          if(link == reactiveLink.link) {
-            window.location.hash = `#${link}`;
-            reactiveLink.isActive = true;
-          }
-          return reactiveLink;
-        });
-        setLinks(() => updated);
-      })
-    });
+    let activeLinkIdx = -1;
+    const dict: {[k: string]: number} = {};
+    for(let i = 0; i < reactiveLinks.length; i++) {
+      const link = reactiveLinks[i];
+      dict[link.link] = i;
+      EventBus.$on(generateChannel(channels.intersect, link.link), () => {
+        const tmp = reactiveLinks;
+        const newLinkIdx = dict[link.link];
+        if(newLinkIdx === activeLinkIdx) return;
+        if(activeLinkIdx >= 0) {
+          tmp[activeLinkIdx].isActive = false;
+        }
+        tmp[newLinkIdx].isActive = true;
+        activeLinkIdx = newLinkIdx;
+        setLinks(() => [...tmp]);
+        history.replaceState(null, '', document.location.pathname + `#${link.link}`);
+      });
+    }
   },[]);
   return (
     <div className="mt-12">

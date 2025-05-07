@@ -1,7 +1,7 @@
 "use client";
 import IntersectionHook from '@/hooks/intersectionHook';
 
-export const HomeClientSideComponent = () => {
+const HomeClientSideComponent = () => {
     IntersectionHook(['#about','#experience']);
   return (<>
     <div
@@ -17,3 +17,4 @@ export const HomeClientSideComponent = () => {
   </>);
 }
 
+export default HomeClientSideComponent;

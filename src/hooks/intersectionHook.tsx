@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { createObservableElement } from "@/utils/intersectionObserver";
 import EventBus from "../eventBus";
 import {
@@ -13,11 +13,12 @@ const IntersectionHook = (elementsToObserve: Array<string> = []) => {
       return createObservableElement(
         document.querySelector(element),
         (entry,_, observer) => {
-            if(window.innerWidth >= 1024) {
+            const isReady = document.readyState === 'complete';
+            if(window.innerWidth >= 1024 && isReady) {
               const channel = generateChannel(channels.intersect,entry.target.id)
               eventsInAir[channel.listenTo] = true;
               EventBus.$emit(channel);
-            } else {
+            } else if(window.innerWidth < 1024) {
               window.location.hash = '';
             }
           return observer;
@@ -29,6 +30,7 @@ const IntersectionHook = (elementsToObserve: Array<string> = []) => {
         obs.disconnect();
       });
       EventBus.$off(Object.keys(eventsInAir) as string[]);
+      window.removeEventListener("load", loadEvent);
     }
   }, []);
 }
