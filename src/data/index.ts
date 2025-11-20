@@ -51,6 +51,40 @@ export const data: TUserInfo = {
   experience: [
     {
       timeline: {
+        from: 'SEP 2023',
+        to: 'PRESENT',
+      },
+      company: {
+        title: 'Big Black Box',
+        link: 'https://bigblackbox.kz/',
+      },
+      role: 'Frontend Software Engineer (Contract)',
+      location: 'Remote from Seattle, WA',
+      description: `
+        Frontend engineering for a retail grocery chain platform (similar to Safeway/QFC).
+- Developed user interfaces for high-traffic product catalog and checkout systems using Vue, React, and TypeScript.
+- Owned core product domains end-to-end, leading architectural decisions, implementation strategy, and production delivery.
+- Resolved complex performance and build pipeline bottlenecks, improving load times and system efficiency under high-load conditions.
+- Authored and maintained comprehensive technical documentation to ensure knowledge continuity and cross-team alignment.
+      `,
+      technologies: [
+        { title: 'Vue.js v2', link: 'https://v2.vuejs.org/'},
+        { title: 'Vue.js v3', link: 'https://vuejs.org/'},
+        { title: 'React', link: 'https://react.dev/' },
+        { title: 'TypeScript', link: 'https://www.typescriptlang.org/' },
+        { title: 'JavaScript', link: 'https://en.wikipedia.org/wiki/JavaScript' },
+        { title: 'Nuxt.js', link: 'https://nuxt.com/' },
+        { title: 'CSS', link:'https://en.wikipedia.org/wiki/CSS'},
+        { title: 'SCSS', link: 'https://sass-lang.com/' },
+        { title: 'TailwindCSS',link: 'https://tailwindcss.com/' },
+        { title: 'Vuetify', link: 'https://vuetifyjs.com/en/' },
+        { title: 'Docker', link: 'https://docker.com/' },
+        { title: 'NGINX', link: 'https://nginx.org/' },
+        { title: 'GitLab CI/CD', link: 'https://gitlab.com/' },
+      ]
+    },
+    {
+      timeline: {
         from: 'MAR',
         to: 'SEP 2023',
       },
@@ -69,43 +103,19 @@ authentication and error tracking with Sentry.
 - Optimized performance with nginx proxy and gzip compression.
       `,
       technologies: [
-        {title: 'Element Plus', link: 'https://element-plus.org/en-US/'},
-        {
-          title: 'JavaScript',
-        },
-        {
-          title:'Vue.js v2',
-        },
-        {
-          title:'Vue.js v3',
-        },
-        {
-          title:'Nuxt.js',
-        },
-        {
-          title:'Typescript',
-        },
-        {
-          title:'CSS',
-        },
-        {
-          title:'SCSS',
-        },
-        {
-          title:'Vuetify',
-        },
-        {
-          title:'TailwindCSS',
-        },
-        {
-          title: 'Docker',
-        },
-        {
-          title: 'NGINX',
-        },
-        {
-          title: 'GitLab CI/CD',
-        },
+        { title: 'Vue.js v2', link: 'https://v2.vuejs.org/'},
+        { title: 'Vue.js v3', link: 'https://vuejs.org/'},
+        { title: 'React', link: 'https://react.dev/' },
+        { title: 'TypeScript', link: 'https://www.typescriptlang.org/' },
+        { title: 'JavaScript', link: 'https://en.wikipedia.org/wiki/JavaScript' },
+        { title: 'Nuxt.js', link: 'https://nuxt.com/' },
+        { title: 'CSS', link:'https://en.wikipedia.org/wiki/CSS'},
+        { title: 'SCSS', link: 'https://sass-lang.com/' },
+        { title: 'TailwindCSS',link: 'https://tailwindcss.com/' },
+        { title: 'Vuetify', link: 'https://vuetifyjs.com/en/' },
+        { title: 'Docker', link: 'https://docker.com/' },
+        { title: 'NGINX', link: 'https://nginx.org/' },
+        { title: 'GitLab CI/CD', link: 'https://gitlab.com/' },
       ]
     },
     {
@@ -135,42 +145,47 @@ frontends.
 - Implemented dark theme.
       `,
       technologies: [
-        {
-          title: 'JavaScript',
-        },
-        {
-          title:'Vue.js v2',
-        },
-        {
-          title:'Vue.js v3',
-        },
-        {
-          title:'Nuxt.js',
-        },
-        {
-          title:'Typescript',
-        },
-        {
-          title:'CSS',
-        },
-        {
-          title:'SCSS',
-        },
-        {
-          title:'Vuetify',
-        },
-        {
-          title:'TailwindCSS',
-        },
-        {
-          title: 'Docker',
-        },
-        {
-          title: 'NGINX',
-        },
-        {
-          title: 'GitLab CI/CD',
-        },
+        { title: 'Vue.js v2', link: 'https://v2.vuejs.org/'},
+        { title: 'Vue.js v3', link: 'https://vuejs.org/'},
+        { title: 'TypeScript', link: 'https://www.typescriptlang.org/' },
+        { title: 'JavaScript', link: 'https://en.wikipedia.org/wiki/JavaScript' },
+        { title: 'Nuxt.js', link: 'https://nuxt.com/' },
+        { title: 'jQuery', link: 'https://jquery.com/' },
+        { title: 'CSS', link:'https://en.wikipedia.org/wiki/CSS'},
+        { title: 'SCSS', link: 'https://sass-lang.com/' },
+        { title: 'TailwindCSS',link: 'https://tailwindcss.com/' },
+        { title: 'Vuetify', link: 'https://vuetifyjs.com/en/' },
+        { title: 'Docker', link: 'https://docker.com/' },
+        { title: 'NGINX', link: 'https://nginx.org/' },
+        { title: 'GitLab CI/CD', link: 'https://gitlab.com/' },
+      ]
+    },
+    {
+      timeline: {
+        from: 'NOV 2019',
+        to: 'FEB 2020',
+      },
+      company: {
+        title: 'at Orzu',
+        // link: 'https://orzu.org/',
+      },
+      role: 'Full-Stack Web Developer Intern',
+      location: 'Almaty, Kazakhstan',
+      description: `
+        Orzu is a startup marketplace for hiring contractors.
+- Implemented UX and UI for the home page and customer profile pages.
+- Refactored a spaghetti-coded backend into a modular, maintainable architecture, improving developer efficiency by 20%.
+- Introduced source control and replaced legacy FTP-based manual deployments with automated scripts, eliminating an entire class of deployment bugs and improving iteration speed by 50%.
+      `,
+      technologies: [
+        { title: 'JavaScript', link: 'https://en.wikipedia.org/wiki/JavaScript' },
+        { title: 'PHP', link: 'https://www.php.net/' },
+        { title: 'HTML', link: 'https://developer.mozilla.org/en-US/docs/Web/HTML' },
+        { title: 'CSS', link:'https://en.wikipedia.org/wiki/CSS' },
+        { title: 'SCSS', link: 'https://sass-lang.com/' },
+        { title: 'jQuery', link: 'https://jquery.com/' },
+        { title: 'MySQL', link: 'https://www.mysql.com/' },
+        { title: 'Git', link: 'https://github.com/' },
       ]
     }
   ]

@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import MouseTracker from "@/components/MouseTracker";
 import "./globals.css";
+import '@/styles/link.css';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

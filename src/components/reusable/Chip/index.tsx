@@ -10,7 +10,7 @@ const Chip:React.FC<Props>= ({text, link}) => {
       {
         link
           ?
-            <Link href={link} target='_blank'>
+            <Link href={link} target='_blank' className={'link-element'}>
               <span className={`${styles['chip-text']} font-bold text-sm`} aria-label={text}>
                 { text }
               </span>
@@ -21,9 +21,6 @@ const Chip:React.FC<Props>= ({text, link}) => {
           </span>
         
       }
-      {/* <span className={`${styles['chip-text']} font-bold text-sm`} aria-label={text}>
-        { text }
-      </span> */}
     </div>
   )
 };
