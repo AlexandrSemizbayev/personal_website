@@ -1,35 +1,32 @@
 import { useEffect } from "react";
-import { createObservableElement } from "@/utils/intersectionObserver";
 import EventBus from "../eventBus";
 import {
-  channels,
+  Channels,
   generateChannel,
 } from '@/eventBus/events';
+import { initObservers } from "@/utils/customIntersectionObserver";
+const channels:{[k:string]: IChannel} = {};
 
 const IntersectionHook = (elementsToObserve: Array<string> = []) => {
   useEffect(() => {
-    const eventsInAir:{[key: string]: boolean} = {};
-    const observers: Array<IntersectionObserver> = elementsToObserve.map((element) => {
-      return createObservableElement(
-        document.querySelector(element),
-        (entry,_, observer) => {
-            const isReady = document.readyState === 'complete';
-            if(window.innerWidth >= 1024 && isReady) {
-              const channel = generateChannel(channels.intersect,entry.target.id)
-              eventsInAir[channel.listenTo] = true;
-              EventBus.$emit(channel);
-            } else if(window.innerWidth < 1024) {
-              window.location.hash = '';
-            }
-          return observer;
-        }
-      );
+
+    elementsToObserve.forEach((selector: string) => {
+      channels[selector] = generateChannel(Channels.intersect, selector);
     });
+    if(window.innerWidth >= 1024) {
+      initObservers(elementsToObserve, (selector) => {
+        history.replaceState(null, '', document.location.pathname + `#${selector}`);
+        EventBus.$emit(channels[selector]);
+      })
+    } else {
+      window.location.hash = '';
+    }
     return () => {
-      observers.forEach((obs) => {
-        obs.disconnect();
-      });
-      EventBus.$off(Object.keys(eventsInAir) as string[]);
+      const keys = Object.keys(channels) as string[];
+      EventBus.$off(keys as string[]);
+      keys.forEach((key: string) => {
+        delete channels[key];
+      })
     }
   }, []);
 }

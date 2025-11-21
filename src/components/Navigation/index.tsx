@@ -4,12 +4,12 @@ import { useState, useEffect } from 'react';
 
 import EventBus from '../../eventBus';
 import {
-  channels,
+  Channels,
   generateChannel,
 } from '@/eventBus/events';
 import styles from './styles.module.scss';
 
-const hash = typeof window !== 'undefined' ? window.location.hash.replace('#', '') || 'about' : 'about';
+const hash = typeof window !== 'undefined' ? location.hash.replace('#', '') || 'about' : 'about';
 function generateRoute(title: string, link?: string, isActive?: boolean) {
   return {
     title: title.toUpperCase(),
@@ -35,20 +35,20 @@ const Navigation = () => {
     setLinks(() => updatedLinks);
   }
   useEffect(() => {
-    let activeLinkIdx = -1;
     const dict: {[k: string]: number} = {};
     for(let i = 0; i < reactiveLinks.length; i++) {
       const link = reactiveLinks[i];
       dict[link.link] = i;
-      EventBus.$on(generateChannel(channels.intersect, link.link), () => {
+      EventBus.$on(generateChannel(Channels.intersect, link.link), () => {
         const tmp = reactiveLinks;
-        const newLinkIdx = dict[link.link];
-        if(newLinkIdx === activeLinkIdx) return;
-        if(activeLinkIdx >= 0) {
-          tmp[activeLinkIdx].isActive = false;
+        for(let i = 0; i < tmp.length; i++) {
+          tmp[i].isActive = link.link === tmp[i].link;
+          // if(link.link !== tmp[i].link) {
+          //   tmp[i].isActive = false;
+          // } else {
+          //   tmp[i].isActive = true;
+          // }
         }
-        tmp[newLinkIdx].isActive = true;
-        activeLinkIdx = newLinkIdx;
         setLinks(() => [...tmp]);
         history.replaceState(null, '', document.location.pathname + `#${link.link}`);
       });

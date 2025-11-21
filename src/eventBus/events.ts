@@ -1,15 +1,14 @@
-type ChannelValues = typeof channels[keyof typeof channels]
 const subscriptions: {
   [key: string] : {
-    channel: ChannelValues,
+    channel: typeof Channels[keyof  typeof Channels],
     event: string,
   }} = {};
 
-export const channels = {
-  intersect: '@intersect/',
+export enum Channels {
+  intersect='@intersect/',
 }
 
-export const generateChannel = (channel: ChannelValues, event: string) : IChannel => {
+export const generateChannel = (channel: typeof Channels[keyof  typeof Channels], event: string) : IChannel => {
   const listenToChannel = `${channel}${event}`;
   if(!subscriptions[listenToChannel]) {
     subscriptions[listenToChannel] = {
@@ -23,3 +22,5 @@ export const generateChannel = (channel: ChannelValues, event: string) : IChanne
     listenTo:listenToChannel,
   }
 }
+
+// TODO: remove subscriptions

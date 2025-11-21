@@ -2,7 +2,7 @@
 import IntersectionHook from '@/hooks/intersectionHook';
 
 const HomeClientSideComponent = () => {
-    IntersectionHook(['#about','#experience']);
+    IntersectionHook(['about','experience']);
   return (<>
     <div
       className="text-2xl"
