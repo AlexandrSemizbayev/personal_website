@@ -1,7 +1,7 @@
 let timeout:  null | ReturnType<typeof setTimeout> = null;
 let currentSelector = '';
 
-function delayedCall(callback: (...args: any[]) => any, selector: string) {
+function delayedCall(callback: () => void, selector: string) {
 	// @ts-expect-error It's just a timeout guys
 	clearTimeout(timeout);
 	timeout = setTimeout(() => {
